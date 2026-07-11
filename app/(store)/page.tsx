@@ -34,22 +34,27 @@ export default async function HomePage() {
       <section className="qb-about">
         <div className="qb-about__inner">
           <div className="qb-about__text">
-            <h2>About Queen Beauty</h2>
-            <p>
-              Born from a passion for luxury and self-care, Queen Beauty
-              curates the finest beauty products for those who deserve nothing
-              but the best. Every product in our collection is carefully
-              selected to enhance your natural beauty and elevate your daily
-              ritual.
+            <h2>Notre Histoire</h2>
+            <p style={{ fontStyle: "italic", color: "var(--primary)", fontSize: "1.05rem", marginBottom: "1.2rem", lineHeight: 1.8 }}>
+              &ldquo; La beaute n&apos;est pas un privilege — c&apos;est un art de vivre. &rdquo;
             </p>
-            <br />
-            <p>
-              We believe beauty is a form of self-expression — and every queen
-              deserves to shine in her own unique way.
+            <p style={{ marginBottom: "1rem", lineHeight: 1.9 }}>
+              Nee d&apos;une passion profonde pour l&apos;excellence et le soin de soi,
+              <strong style={{ color: "var(--primary)" }}> Queen Beauty </strong>
+              est bien plus qu&apos;une boutique — c&apos;est un sanctuaire dedie aux femmes
+              qui refusent de faire des compromis sur leur elegance.
+            </p>
+            <p style={{ marginBottom: "1rem", lineHeight: 1.9 }}>
+              Chaque produit de notre collection est selectionne avec une rigueur absolue,
+              pour sublimer votre beaute naturelle et transformer votre quotidien
+              en un rituel de luxe et de douceur.
+            </p>
+            <p style={{ lineHeight: 1.9, color: "var(--muted-foreground)" }}>
+              Parce que vous le meritez — chaque jour, sans exception.
             </p>
             <br />
             <Link href="/products" className="qb-btn qb-btn--gold" style={{ display: "inline-flex", marginTop: "1rem" }}>
-              Shop Now
+              Decouvrir la Collection
             </Link>
           </div>
           <div className="qb-about__image">
@@ -64,8 +69,8 @@ export default async function HomePage() {
 
       {/* Contact */}
       <section className="qb-contact" id="contact">
-        <h2>Get in Touch</h2>
-        <p>We are here to help you find your perfect beauty routine.</p>
+        <h2>Nous Contacter</h2>
+        <p>Notre equipe est a votre disposition pour vous accompagner.</p>
         <div className="qb-contact__phones">
           <a href="tel:+21692315488" className="qb-contact__phone">
             <Phone size={16} /> +216 92 315 488
