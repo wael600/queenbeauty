@@ -1,0 +1,62 @@
+enum ProductCategory {
+  MOBILE_PHONES_ACCESSORIES
+  BEAUTY_PERSONAL_CARE
+  FASHION_APPAREL
+  HOME_KITCHEN
+  HEALTH_WELLNESS
+  BABY_KIDS
+  AUTOMOTIVE_ACCESSORIES
+  GAMING_TECH_ACCESSORIES
+  PET_SUPPLIES
+  SMART_HOME_PRODUCTS
+}
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+}
+model Product {
+  id                     String                 @id @default(uuid())
+  name                   String
+  description            String
+  category               ProductCategory        @default(HOME_KITCHEN)
+  priceInCents           Int                    @default(0)
+  discountPriceInCents   Int?
+  filePath               String
+  imagePath              String
+  images                 String[]
+  isAvailableForPurchase Boolean                @default(true)
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+  downloadVerifications  DownloadVerification[]
+  orders                 Order[]
+}
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+model Order {
+  id                  String   @id @default(uuid())
+  pricePaidInCents    Int
+  deliveryFeeInCents  Int      @default(700)
+  customerName        String?
+  customerPhone       String?
+  customerAddress     String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  userId              String
+  productId           String
+  product             Product  @relation(fields: [productId], references: [id])
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+model DownloadVerification {
+  id        String   @id @default(uuid())
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
