@@ -1,18 +1,7 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
-import db from "@/src/db";
-import { ProductCard } from "@/components/ui/ProductCard";
-
-async function getFeatured() {
-  return db.product.findMany({
-    where: { isAvailableForPurchase: true },
-    orderBy: { createdAt: "desc" },
-    take: 8,
-  });
-}
 
 export default async function HomePage() {
-  const products = await getFeatured();
   return (
     <main>
       {/* Hero */}
@@ -39,30 +28,6 @@ export default async function HomePage() {
           </div>
           <div className="qb-hero__divider" style={{ marginTop: "0.5rem" }} />
         </div>
-      </section>
-
-      {/* Collections */}
-      <section className="qb-section">
-        <div className="qb-section__head">
-          <h2>Our Collections</h2>
-          <p>Exquisitely curated beauty products for the modern queen</p>
-        </div>
-        {products.length === 0 ? (
-          <p style={{ textAlign: "center", color: "var(--muted-foreground)" }}>
-            No products available yet.
-          </p>
-        ) : (
-          <div className="qb-grid">
-            {products.map(p => <ProductCard key={p.id} {...p} />)}
-          </div>
-        )}
-        {products.length > 0 && (
-          <div style={{ textAlign: "center", marginTop: "3rem" }}>
-            <Link href="/products" className="qb-btn qb-btn--outline">
-              View All Products
-            </Link>
-          </div>
-        )}
       </section>
 
       {/* About */}
@@ -105,12 +70,11 @@ export default async function HomePage() {
           <a href="tel:+21692315488" className="qb-contact__phone">
             <Phone size={16} /> +216 92 315 488
           </a>
-          <a href="tel:+21692315488" className="qb-contact__phone">
-            <Phone size={16} /> +216 92 315 488
+          <a href="tel:+21693674641" className="qb-contact__phone">
+            <Phone size={16} /> +216 93 674 641
           </a>
         </div>
       </section>
     </main>
   );
 }
-
